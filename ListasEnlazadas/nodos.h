@@ -6,7 +6,7 @@ class nodos
 {
 public:
     nodos(int valor);
-    nodos next;
+    nodos* next;
     int valor;
 
 

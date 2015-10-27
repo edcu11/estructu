@@ -1,5 +1,5 @@
 #include <iostream>
-#include <nodos.h>
+#include "nodos.h"
 
 using namespace std;
 
@@ -13,50 +13,51 @@ nodos* final;
 void add(int x){
    if(begin==NULL){
        begin=new nodos(x);
-       final=new nodos(x);
+       final=begin;
    }
    else{
         nodos* child= begin;
-        while(child.next!=NULL)
-            child=child.next;
-        child.next=new Nodos(x);
+        while(child->next!=NULL)
+            child=child->next;
+        child->next=new nodos(x);
    }
 
 }
 
-bool insert(int pos,int x){
+void insert(int pos,int x){
     nodos* child=begin;
-    nodos in=new nodos(x);
+    nodos* in=new nodos(x);
     if(child==NULL)
         child=new nodos(x);
     else{
-        for(int n=0;n<pos;child=child.next){
+        for(int n=0;n<pos;child=child->next){
 
         }
-        in.next=child.next;
-        child.next=in;
+        in->next=child->next;
+        child->next=in;
+
     }
 
 }
 
 bool borrar(int valor){
-    nodos child=begin;
-    while(child.next.valor!=valor){
-        child=child.next;
-        if(child.next==NULL)
+    nodos* child=begin;
+    while(child->next->valor!=valor){
+        child=child->next;
+        if(child->next==NULL)
             return false;
     }
-    nodos borre=child.next;
-    child.next=child.next.next;
-    borre.next=NULL;
+    nodos borre=child->next;
+    child->next=child->next->next;
+    borre->next=NULL;
     return true;
 
 }
 
 nodos buscar(int valor){
-    nodos child=begin;
-    while(child.next.valor!=valor)
-        child=child.next;
+    nodos* child=begin;
+    while(child->next->valor!=valor)
+        child=child->next;
     return child;
 
 }
@@ -66,10 +67,10 @@ void imprimir(){
         cout<<"No hay nada viejo"<<endl;
         return;
     }
-    nodos child=begin;
+    nodos* child=begin;
 
-    while(child.next!=NULL){
-        cout<<child.valor<<endl;
+    while(child->next!=NULL){
+        cout<<child->valor<<endl;
 
     }
 
@@ -96,13 +97,18 @@ int main()
 
         switch(resp){
             case 1:
-                add(cin>>valoring);break;
+                cin>>valoring;
+                add(valoring);break;
             case 2:
-                buscar(cin>>valoring);break;
+                cin>>valoring;
+                buscar(valoring);break;
             case 3:
-                insert(cin>>valoring,cin>>valor2);break;
+                cin>>valoring;
+                cin>>valor2;
+                insert(valoring, valor2);break;
             case 4:
-                borrar(cin>>valoring);break;
+                cin>>valoring;
+                borrar(valoring);break;
             case 5:
                 imprimir();break;
 
