@@ -4,8 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    nodo.cpp
+    cursor.cpp
 
 HEADERS += \
-    nodo.h
+    cursor.h
 

@@ -1,19 +1,18 @@
 #ifndef NODO_H
 #define NODO_H
+#include <string>
+
+using namespace std;
 
 
 class Nodo
 {
 public:
-    Nodo();
+    Nodo(string name);
     string nombre;
-    int n_aris, fase;
+    int aristas_u,fase;
     Nodo* aristas[10];
-
-    void addArista(Nodo n);
-    bool checkFase(int x);
-
-
+    void add_A(Nodo* n);
 
 };
 
