@@ -4,23 +4,25 @@
 using namespace std;
 
 
-
 nodos* begin;
 nodos* final;
 
 
 
-void add(int x){
+bool add(int x){
    if(begin==NULL){
        begin=new nodos(x);
        final=begin;
+       return true;
    }
    else{
         nodos* child= begin;
         while(child->next!=NULL)
             child=child->next;
         child->next=new nodos(x);
+        return true;
    }
+   return false;
 
 }
 
@@ -47,18 +49,23 @@ bool borrar(int valor){
         if(child->next==NULL)
             return false;
     }
-    nodos borre=child->next;
+    nodos* borre=child->next;
     child->next=child->next->next;
     borre->next=NULL;
     return true;
 
 }
 
-nodos buscar(int valor){
+nodos* buscar(int valor){
     nodos* child=begin;
-    while(child->next->valor!=valor)
-        child=child->next;
-    return child;
+    while(child->next->valor!=valor || child!=NULL){
+        if(child->next->valor!=valor)
+            child=child->next;
+        else if(child==NULL)
+            return NULL;
+        else
+            return child;
+    }
 
 }
 
@@ -81,6 +88,7 @@ void imprimir(){
 int main()
 {
     int resp;
+    begin = new nodos(1);
     int valoring, valor2;
     while(resp!=6){
         cout<<"----Menu-----"<<endl;
