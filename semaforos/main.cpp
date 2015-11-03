@@ -91,6 +91,7 @@ int main(int argc, char *argv[])
 
 
     grafo->resolver();
+    grafo->imprimir();
 
 
 

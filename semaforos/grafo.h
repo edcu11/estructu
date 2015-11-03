@@ -15,6 +15,8 @@ public:
     int nds_u;
     void addNodo(Nodo* n);
     void resolver();
+    void imprimir();
+    bool validar(Nodo* n,int fase);
 
 
 };

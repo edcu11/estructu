@@ -13,6 +13,7 @@ public:
     int aristas_u,fase;
     Nodo* aristas[10];
     void add_A(Nodo* n);
+    bool validar(int fase);
 
 };
 
