@@ -11,7 +11,6 @@ public:
     }
 };
 
-
 Nodo* begin;
 Nodo* final;
 
@@ -31,14 +30,12 @@ void agregar(int x){
 Nodo* buscar(int valor){
     Nodo* child=begin;
     while(child!=NULL){
-
         if(child->next->valor==valor)
             return child;
-        child=child->next;
+        else
+            child=child->next;
     }
-
     return NULL;
-
 
 }
 
@@ -62,20 +59,10 @@ void insertar(int buscado, int x){
     in->next=nu->next;
     nu->next=in;
 
-    /*int n=0;
-    while(n<pos){
-        child=child->next;
-        n++;
-    }
-    in->next=child->next;
-    child->next=in;
-    cout<<"hola"<<endl;*/
-
 }
 
 void imprimir(){
     Nodo* child=begin;
-
     cout<<"----NODOS-----"<<endl;
 
     while(child!=NULL){

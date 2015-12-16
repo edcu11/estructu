@@ -14,15 +14,12 @@ bool eliminar(int posicion)
         array[n]=array[n+1];
     }
     return true;
-
-
-
 }
 
 bool add(int x)
 {
-    if(elementos+1<limite){
-        array[elementos+1]=valor;
+    if(elementos+1<lim){
+        array[elementos+1]=x;
         elementos++;
         return true;
     }
@@ -45,11 +42,19 @@ bool insert(int valor, int pos){
 int buscar(int valor){
 
     for(int n=0;n<=elementos;n++){
-        if(array[n]==valor)
+        if(array[n]==valor){
             return n;
+        }
     }
 
     return -1;
+}
+
+void imprimir(){
+
+    for(int c=0;c<10;c++){
+        cout<<array[c]<<endl;
+    }
 }
 
 
@@ -59,25 +64,34 @@ int main()
     int valoring, valor2;
     while(resp!=5){
         cout<<"----Menu-----"<<endl;
-        cout<<"1. Añadir"<<endl;
-        cout<<"2. Buscar"<<endl;
-        cout<<"3. Insertar"<<endl;
-        cout<<"4. Borrar"<<endl;
-        cout<<"5. Salir"<<endl;
+        cout<<"1-> Añadir"<<endl;
+        cout<<"2-> Buscar"<<endl;
+        cout<<"3-> Insertar"<<endl;
+        cout<<"4-> Borrar"<<endl;
+        cout<<"5-> Imprimir"<<endl;
 
         cin>>resp;
-        if(resp==5)
+        if(resp==6)
             break;
 
         switch(resp){
             case 1:
-                add(cin>>valoring);break;
+                cin>>valoring;
+                add(valoring);
+                break;
             case 2:
-                buscar(cin>>valoring);break;
+                 cin>>valoring;
+                buscar(valoring);break;
             case 3:
-                insert(cin>>valoring,cin>>valor2);break;
+                 cin>>valoring;
+                 cin>>valor2;
+                cout<<insert(valoring,valor2)<<endl;break;
             case 4:
-                eliminar(cin>>valoring);break;
+                cin>>valoring;
+                eliminar(valoring);break;
+            case 5:
+                imprimir();
+                break;
         }
     }
     return 0;

@@ -10,7 +10,6 @@ Nodo* raiz;
 void agregar(Nodo* n, Nodo* viajero){
     if(raiz==NULL){
         raiz=n;
-        cout<<"ediu"<<endl;
         return;
     }
     if(n->val > viajero->val){
@@ -37,6 +36,10 @@ void agregar(Nodo* n, Nodo* viajero){
 }
 
 Nodo* buscar(int v,Nodo* viajero){
+
+    if(v==viajero->val)
+        return viajero;
+
     if(v > viajero->val){
         if(viajero->der->val==v){
             return viajero->der;
@@ -49,10 +52,10 @@ Nodo* buscar(int v,Nodo* viajero){
         }
         buscar(v,viajero->izq);
     }
-    else
+        cout<<"no hay nada"<<endl;
         return NULL;
 }
-
+//no funciona
 void eliminar(int x, Nodo* viajero){
     if(viajero==raiz){
         if(!buscar(x,raiz)){
@@ -62,22 +65,14 @@ void eliminar(int x, Nodo* viajero){
         else
             viajero=buscar(x,raiz);
     }
-
-
-
-
-
 }
 
 void imprimir(Nodo* n){
     cout<<"Nodo= "<<n->val<<endl;
-
     if(n->izq!=NULL)
         imprimir(n->izq);
     if(n->der!=NULL)
         imprimir(n->der);
-
-
 }
 
 
@@ -85,23 +80,28 @@ void imprimir(Nodo* n){
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-
-    agregar(new Nodo(5),raiz);
-    agregar(new Nodo(6),raiz);
-    agregar(new Nodo(1),raiz);
-    agregar(new Nodo(2),raiz);
-    agregar(new Nodo(3),raiz);
-    agregar(new Nodo(8),raiz);
-    agregar(new Nodo(8),raiz);
-    agregar(new Nodo(9),raiz);
-    agregar(new Nodo(4),raiz);
-    agregar(new Nodo(7),raiz);
-    cout<<"ed"<<endl;
-    imprimir(raiz);
-    cout<<"buscando 2= "<<buscar(2,raiz)<<endl;
-    cout<<buscar(2,raiz)->val<<endl;
-
-
+       int opc;
+       int valor;
+       while(true){
+           cout<<"1-Agregar"<<endl;
+           cout<<"2-Buscar"<<endl;
+           cout<<"3-Eliminar"<<endl;
+           cout<<"4-Imprimir"<<endl;
+           cin>>opc;
+           switch(opc){
+               case 1:
+                    cin>>valor;
+                    agregar(new Nodo(valor),raiz); break;
+               case 2:
+                    cin>>valor;
+                    cout<<buscar(valor,raiz)->val<<endl; break;
+               case 3:
+                    cin>>valor;
+                    eliminar(valor,raiz);break;
+               case 4:
+                    imprimir(raiz); break;
+           }
+       }
 
 
     return a.exec();

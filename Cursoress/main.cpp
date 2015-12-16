@@ -61,11 +61,6 @@ void insertar(char val, int pos_l, char val_pos){
     int pos= buscar(pos_l,val_pos);
     cursor* i= &array[listas[pos_l]];
 
-
-
-
-
-
     if(cont<10){
         int nextDisp=listas[0];
         Nodo* temp=&arreglo[listas[lista]];
@@ -85,14 +80,21 @@ void insertar(char val, int pos_l, char val_pos){
 
 
 
-
+void imprimir(){
+    for(int c=0;c<10;c++){
+        cout<<listas[c]<<endl;
+    }
+}
 
 
 
 int main()
 {
 
-
+    add('l');
+    agregar('a',4);
+    agregar('b',3);
+    agregar('c',2);
 
     return 0;
 }
