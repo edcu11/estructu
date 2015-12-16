@@ -5,10 +5,11 @@
 
 int hash(std::string h){
 
-    int val;
+   int val;
+   int letra;
    for(int i=0;i<h.size();i++){
-        val= val*h[i];
-
+       letra=h[i];
+        val=val+letra;
    }
     val= val/h[0];
 
@@ -22,7 +23,6 @@ int main(int argc, char *argv[])
 
     std::string l;
     std::cin>>l;
-
     hash(l);
 
     return a.exec();
